@@ -1,49 +1,64 @@
-// Wait for DOM to load
-document.addEventListener("DOMContentLoaded", () => {
-    // 1. Explore Now Button Click
-    const exploreBtn = document.querySelector(".explore_btn");
-    exploreBtn.addEventListener("click", () => {
-        alert("Thanks for exploring! Scroll down to view our menu 🍽️");
-        document.querySelector(".menu").scrollIntoView({ behavior: "smooth" });
+// script.js
+document.addEventListener("DOMContentLoaded", function () {
+  // Scroll to Menu when "Explore Now" is clicked
+  const exploreBtn = document.querySelector(".explore_btn");
+  const menuSection = document.querySelector(".menu");
+
+  if (exploreBtn && menuSection) {
+    exploreBtn.addEventListener("click", function () {
+      menuSection.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+  // Newsletter email submission (enter key or blur)
+  const emailInput = document.querySelector('.news_letter input[type="email"]');
+  if (emailInput) {
+    emailInput.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        submitEmail(emailInput);
+      }
     });
 
-    // 2. Newsletter Email Validation
-    const emailInput = document.querySelector(".news_letter input[type='email']");
-    emailInput.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            validateEmail();
-        }
+    emailInput.addEventListener("blur", function () {
+      if (emailInput.value.trim()) {
+        submitEmail(emailInput);
+      }
     });
+  }
 
-    function validateEmail() {
-        const email = emailInput.value.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (emailRegex.test(email)) {
-            alert("✅ Thank you for subscribing!");
-            emailInput.value = "";
-        } else {
-            alert("❌ Please enter a valid email address.");
-        }
+  function submitEmail(inputElement) {
+    const email = inputElement.value.trim();
+    if (validateEmail(email)) {
+      alert(`Thanks for subscribing, ${email}!`);
+      inputElement.value = "";
+    } else {
+      alert("Please enter a valid email address.");
     }
+  }
 
-    // 3. Menu Item Hover Effects
-    const gridImages = document.querySelectorAll(".grid_image");
-    gridImages.forEach(image => {
-        image.addEventListener("mouseover", () => {
-            image.style.transform = "scale(1.05)";
-            image.style.transition = "transform 0.3s ease";
-        });
-        image.addEventListener("mouseout", () => {
-            image.style.transform = "scale(1)";
-        });
-    });
+  function validateEmail(email) {
+    // Simple email format validation
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
 
-    // 4. Footer Icons Feedback
-    const icons = document.querySelectorAll(".icon");
-    icons.forEach(icon => {
-        icon.addEventListener("click", () => {
-            alert("Follow us on social media 🔗");
-        });
+  // Optional: Add hover effect to menu grid items (can be animated)
+  const gridImages = document.querySelectorAll(".grid_image");
+  gridImages.forEach(img => {
+    img.addEventListener("mouseover", () => {
+      img.style.transform = "scale(1.05)";
     });
+    img.addEventListener("mouseout", () => {
+      img.style.transform = "scale(1)";
+    });
+  });
+
+  // (Optional) Mobile menu toggle logic
+  const navToggle = document.querySelector(".nav_toggle"); // you can add this icon/button in nav
+  const navLinks = document.querySelector(".navigation");
+
+  if (navToggle && navLinks) {
+    navToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  }
 });
