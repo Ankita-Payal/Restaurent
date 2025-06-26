@@ -1,0 +1,478 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    line-height: 1.4;
+    font-weight: 300;
+    font-family: "Roboto", sans-serif;
+}
+button {
+    padding: 10px 15px;
+    border: none;
+    transition: 0.2s ease-in-out;
+    cursor: pointer; /* Added cursor pointer */
+}
+button:hover {
+    opacity: 0.8;
+}
+
+/* --- Navigation --- */
+nav {
+    box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.05);
+    position: sticky;
+    top: 0;
+    margin-bottom: 32px;
+    background: white;
+    padding: 10px;
+    z-index: 50;
+}
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo_container img {
+    max-width: 120px; /* Adjust logo size */
+}
+.nav_links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0; /* Ensure no default margin from ul */
+    padding: 0; /* Ensure no default padding from ul */
+}
+.nav_links li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+.nav_links li a:hover {
+    color: #ffc066;
+}
+
+/* --- General Utilities --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Added horizontal padding for smaller screens */
+}
+.bar_icon { /* If you implement a hamburger icon */
+    font-size: 32px;
+    display: none; /* Hidden by default, show on mobile */
+}
+.tag {
+    background-color: #149f39;
+    padding: 5px 10px;
+    color: white;
+    align-self: flex-start;
+    font-size: 0.9em;
+    border-radius: 3px;
+}
+.divider {
+    border: 1px solid #ccc;
+    margin: 40px 0; /* Increased margin for better spacing */
+}
+
+/* --- Hero Section --- */
+.hero {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+.hero_image img {
+    width: 100%;
+    max-width: 500px; /* Control max size of hero image */
+    height: auto;
+}
+.hero_content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1; /* Allows content to grow */
+}
+.hero_content h1 {
+    font-size: 72px;
+    line-height: 1.2;
+    font-weight: 400;
+}
+.explore_btn {
+    background: #ffc066;
+    align-self: flex-start;
+    color: white; /* Added color for button text */
+    border-radius: 5px;
+    padding: 12px 25px; /* Adjust button padding */
+    font-size: 1.1em;
+}
+
+/* --- Features Section --- */
+.features {
+    margin-top: 100px;
+    display: flex;
+    margin-bottom: 50px;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Allows features to wrap on smaller screens */
+    gap: 30px; /* Added gap between features */
+}
+.feature {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    transition: 0.2s ease-in-out;
+    flex: 1; /* Allows features to take equal width */
+    min-width: 280px; /* Minimum width before wrapping */
+    align-items: center; /* Vertically align content */
+    border-radius: 8px; /* Slightly rounded corners */
+}
+.feature_image {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+}
+.feature_content h3 {
+    margin-bottom: 5px;
+}
+.feature:hover {
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+    transform: translateY(-5px); /* Slight lift effect */
+}
+
+/* --- Menu Section (index.html preview) --- */
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin: 50px 0;
+    align-items: center;
+    text-align: center; /* Center text within the section */
+}
+.menu h2 {
+    font-size: 48px;
+    font-weight: 500;
+    color: #333;
+}
+.grid {
+    display: grid;
+    gap: 10px;
+    grid-template-areas:
+        "I1 I1 I2 I3"
+        "I1 I1 I2 I7"
+        "I4 I5 I6 I7";
+    width: 100%;
+    max-width: 1000px; /* Max width for the grid */
+    margin: 0 auto;
+}
+.grid_item {
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative; /* For potential overlays later */
+}
+.grid_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This is key for consistent image sizing */
+    display: block; /* Removes extra space below image */
+    transition: 0.2s ease-in-out;
+}
+.grid_image:hover {
+    transform: scale(1.05);
+}
+
+.item1 { grid-area: I1; }
+.item2 { grid-area: I2; }
+.item3 { grid-area: I3; }
+.item4 { grid-area: I4; }
+.item5 { grid-area: I5; }
+.item6 { grid-area: I6; }
+.item7 { grid-area: I7; }
+
+.view_full_menu {
+    background: #149f39;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 30px; /* More space from grid */
+    transition: background 0.2s ease-in-out;
+    font-weight: 500;
+}
+.view_full_menu:hover {
+    background: #118c32; /* Slightly darker on hover */
+}
+
+/* --- Full Menu Section (menu.html) --- */
+.menu_full {
+    padding: 50px 0;
+    text-align: center;
+}
+.menu_full h2 {
+    font-size: 48px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 20px;
+}
+.menu_full .tag {
+    margin: 0 auto 20px; /* Center tag */
+}
+
+.menu_categories {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+.category_btn {
+    background-color: #eee;
+    color: #333;
+    border-radius: 25px; /* Pill shape */
+    padding: 10px 20px;
+    font-size: 1.0em;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid #ddd;
+}
+.category_btn.active, .category_btn:hover {
+    background-color: #149f39;
+    color: white;
+    border-color: #149f39;
+}
+
+.menu_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 30px;
+}
+.menu_item {
+    background-color: white;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+}
+.menu_item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+.menu_item img {
+    width: 100%;
+    height: 200px; /* Consistent image height for menu items */
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+.menu_item h3 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    color: #333;
+}
+.menu_item p {
+    font-size: 0.95em;
+    color: #666;
+    padding: 0 15px;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allows paragraph to take available space */
+}
+.menu_item .price {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #149f39;
+    margin-bottom: 15px;
+}
+.menu_item .add_to_cart {
+    background-color: #ffc066;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 1em;
+}
+.menu_item .add_to_cart:hover {
+    background-color: #e6a84f;
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: #fff0db;
+    padding: 30px 0; /* Consistent padding */
+}
+.footer_container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px; /* Increased gap */
+}
+.footer_logo img {
+    max-width: 150px;
+}
+.link_lists {
+    min-width: 150px; /* Ensure some minimum width for columns */
+}
+.link_lists ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.link_lists ul li {
+    margin-bottom: 8px;
+}
+.link_lists ul li a {
+    text-decoration: none;
+    color: #666;
+    transition: color 0.2s ease-in-out;
+}
+.link_lists ul li a:hover {
+    color: #149f39;
+}
+.link_lists h3, .news_letter h3 {
+    margin-bottom: 15px; /* More space for headings */
+    color: #555;
+    font-weight: 500;
+}
+.news_letter input {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    width: 100%; /* Make input fill available space */
+    max-width: 250px; /* Limit max width */
+}
+.icon_container {
+    display: flex;
+    gap: 15px;
+    font-size: 28px; /* Slightly smaller icons */
+}
+.icon {
+    color: #555;
+    transition: color 0.2s ease-in-out;
+}
+.icon:hover {
+    color: #149f39;
+}
+
+
+/* --- Media Queries --- */
+@media (max-width: 786px) {
+    .navigation {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .nav_links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    .hero {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    .hero_image img {
+        width: 80%;
+    }
+    .hero_content h1 {
+        font-size: 48px; /* Adjusted for tablet */
+    }
+    .explore_btn {
+        align-self: center; /* Center button on mobile */
+    }
+    .features {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .feature {
+        width: 90%;
+        text-align: center;
+        flex-direction: column;
+    }
+    .grid {
+        grid-template-areas:
+            "I1 I1"
+            "I2 I3"
+            "I4 I5"
+            "I6 I7";
+        padding: 0 10px;
+    }
+    .grid_image {
+        border-radius: 0px;
+    }
+
+    .menu_full h2 {
+        font-size: 38px;
+    }
+    .menu_categories {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .category_btn {
+        width: 80%;
+        max-width: 250px;
+    }
+    .menu_grid {
+        grid-template-columns: 1fr; /* Single column for very small screens */
+        padding: 0 15px;
+    }
+
+    .footer_container {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    .link_lists, .news_letter {
+        width: 100%; /* Full width for footer sections */
+        margin-bottom: 25px;
+    }
+    .news_letter input {
+        max-width: 80%; /* Adjust input width for mobile */
+    }
+    .icon_container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero_content h1 {
+        font-size: 32px;
+    }
+    .tag {
+        font-size: 0.8em;
+        padding: 3px 8px;
+    }
+    .menu h2, .menu_full h2 {
+        font-size: 30px;
+    }
+    .explore_btn, .view_full_menu {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    .menu_item {
+        padding-bottom: 15px;
+    }
+    .menu_item img {
+        height: 180px;
+    }
+    .menu_item h3 {
+        font-size: 1.4em;
+    }
+    .menu_item p {
+        font-size: 0.9em;
+    }
+    .menu_item .price {
+        font-size: 1.2em;
+    }
+    .menu_item .add_to_cart {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+}
